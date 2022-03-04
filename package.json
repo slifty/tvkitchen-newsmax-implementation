@@ -1,0 +1,39 @@
+{
+  "name": "sandbox",
+  "version": "0.0.0",
+  "description": "A testbed for the TV Kitchen",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint 'src/**/*.js'",
+    "start": "yarn babel-node src/index.js",
+    "start:kafka": "docker-compose -f services/kafka/docker-compose.yml up -d",
+    "test": "jest"
+  },
+  "author": "Bad Idea Factory <biffuddotcom@biffud.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@tvkitchen/appliance-caption-srt-generator": "^0.2.0",
+    "@tvkitchen/appliance-core": "0.8.0",
+    "@tvkitchen/appliance-video-segment-generator": "^0.2.0",
+    "@tvkitchen/base-classes": "^2.0.0-alpha.1",
+    "@tvkitchen/countertop": "^0.3.0",
+    "hls-parser": "^0.10.4",
+    "node-fetch": "^2.6.7",
+    "node-webvtt": "^1.9.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.8.7",
+    "@babel/eslint-parser": "^7.14.3",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/register": "^7.8.6",
+    "@jest/console": "^25.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.20.1",
+    "jest": "^26.6.3"
+  }
+}
