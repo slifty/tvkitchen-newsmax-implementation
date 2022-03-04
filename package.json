@@ -12,11 +12,10 @@
   "author": "Bad Idea Factory <biffuddotcom@biffud.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@tvkitchen/appliance-caption-srt-generator": "^0.2.0",
-    "@tvkitchen/appliance-core": "0.8.0",
-    "@tvkitchen/appliance-video-segment-generator": "^0.2.0",
+    "@tvkitchen/appliance-caption-srt-generator": "^0.3.0",
+    "@tvkitchen/appliance-core": "0.9.0",
     "@tvkitchen/base-classes": "^2.0.0-alpha.1",
-    "@tvkitchen/countertop": "^0.3.0",
+    "@tvkitchen/countertop": "^0.4.0",
     "hls-parser": "^0.10.4",
     "node-fetch": "^2.6.7",
     "node-webvtt": "^1.9.3"
