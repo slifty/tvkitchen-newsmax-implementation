@@ -17,9 +17,6 @@ countertop.addAppliance(
 )
 countertop.addAppliance(TextReducerAppliance)
 
-// Override due to a temporary bug
-CaptionSrtGeneratorAppliance.getInputTypes = () => ['TEXT.ATOM']
-
 countertop.addAppliance(CaptionSrtGeneratorAppliance)
 countertop.on('data', (payload) => {
 	if (payload.type === 'TEXT.SRT') {
