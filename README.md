@@ -2,7 +2,20 @@
 
 To run this you need Node 16.x and Docker installed locally.
 
+## Developing
+
+If you want to run this locally you can do so:
+
 1. Clone the repository
 2. `yarn install`
 3. `yarn start:kafka`
 4. `yarn start`
+
+## Using Docker
+
+Alternatively you can run the entire application within Docker using [Docker Compose](https://docs.docker.com/compose/).
+
+1. Clone the repository
+2. `docker-compose up`
+
+This will create zookeeper, kafka, and newsmax docker images.
