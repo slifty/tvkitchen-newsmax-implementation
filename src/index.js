@@ -6,7 +6,12 @@ import {
 import { CaptionSrtGeneratorAppliance } from '@tvkitchen/appliance-caption-srt-generator'
 import { getTimestampFromNewsmaxWebVtt } from './utils'
 
-const countertop = new Countertop()
+const countertop = new Countertop({
+	kafkaSettings: {
+		brokers: ['kafka:9093'],
+		connectionTimeout: 30000,
+	},
+})
 
 countertop.addAppliance(
 	WebVttHlsReceiverAppliance,
