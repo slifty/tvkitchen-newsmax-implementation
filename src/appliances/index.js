@@ -1,2 +1,5 @@
+export * from './AwsUploaderAppliance'
 export * from './WebVttHlsReceiverAppliance'
 export * from './TextReducerAppliance'
+export * from './FileRecorderAppliance'
+export * from './SegmentGeneratorAppliance'

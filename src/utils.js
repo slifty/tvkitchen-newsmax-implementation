@@ -33,7 +33,7 @@ function getOffsetFromXTimestampMap(xTimestampMapValue) {
 export function getTimestampFromNewsmaxWebVtt(url, data) {
 	const parts = url.split('/')
 	const dateString = parts[7]
-	const offset = getOffsetFromXTimestampMap(data.meta['X-TIMESTAMP-MAP=LOCAL'])
+	const offset = 0
 	const baseDate = newsmaxDateStringToDate(dateString)
 	return new Date(baseDate.getTime() + offset)
 }

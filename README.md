@@ -9,7 +9,16 @@ If you want to run this locally you can do so:
 1. Clone the repository
 2. `yarn install`
 3. `yarn start:kafka`
-4. `yarn start`
+4. `yarn start` 
+
+## Setup
+
+You need to populate some environment variables in order for S3 uploading to work:
+
+```
+cp .env.template .env
+edit .env
+```
 
 ## Using Docker
 
