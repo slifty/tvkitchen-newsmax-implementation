@@ -15,10 +15,12 @@
     "@tvkitchen/appliance-caption-srt-generator": "^0.3.0",
     "@tvkitchen/appliance-core": "0.9.0",
     "@tvkitchen/base-classes": "^2.0.0-alpha.1",
-    "@tvkitchen/countertop": "^0.4.0",
+    "@tvkitchen/countertop": "^0.4.1",
+    "aws-sdk": "^2.1154.0",
+    "dotenv": "^16.0.1",
     "hls-parser": "^0.10.4",
     "node-fetch": "^2.6.7",
-    "node-webvtt": "^1.9.3"
+    "node-webvtt": "^1.9.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
