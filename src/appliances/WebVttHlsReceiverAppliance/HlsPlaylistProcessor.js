@@ -30,9 +30,10 @@ class HlsPlaylistProcessor {
 			segmentsAreEqual,
 		)
 		this.previousSegments = newPlaylistData.segments
-		newSegments.forEach((newSegment) => {
-			this.onSegment(newSegment)
-		})
+		await newSegments.reduce(async (previousSegmentPromise, newSegment) => {
+			await previousSegmentPromise;
+			await this.onSegment(newSegment)
+		}, Promise.resolve());
 	}
 
 	start = () => {
