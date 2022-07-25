@@ -11,6 +11,7 @@ import {
 import { CaptionSrtGeneratorAppliance } from '@tvkitchen/appliance-caption-srt-generator'
 import { INTERVALS } from '@tvkitchen/appliance-video-segment-generator'
 import { getTimestampFromNewsmaxWebVtt } from './utils'
+import { logger } from './logger'
 
 dotenv.config()
 
@@ -19,6 +20,7 @@ const countertop = new Countertop({
 		brokers: [process.env.KAFKA_BROKER],
 		connectionTimeout: 30000,
 	},
+	logger,
 })
 
 const origin = new Date();
@@ -69,16 +71,16 @@ countertop.on('data', (payload) => {
 	if (payload.type === 'TEXT.SRT') {
 	}
 	if (payload.type === 'FILE.OPENED') {
-		console.log('\nOPENED FILE')
-		process.stdout.write(payload.data)
+		logger.debug('OPENED FILE')
+		logger.debug(payload.data)
 	}
 	if (payload.type === 'FILE.CLOSED') {
-		console.log('\nCLOSED FILE')
-		process.stdout.write(payload.data)
+		logger.debug('CLOSED FILE')
+		logger.debug(payload.data)
 	}
 	if (payload.type === 'FILE.UPLOADED') {
-		console.log('\nUPLOADED FILE')
-		process.stdout.write(payload.data)
+		logger.debug('UPLOADED FILE')
+		logger.debug(payload.data)
 	}
 })
 countertop.start()
