@@ -22,9 +22,8 @@ const countertop = new Countertop({
 	logger,
 })
 
-const origin = new Date();
-origin.setMinutes(0,0);
-
+const origin = new Date()
+origin.setMinutes(0, 0)
 countertop.addAppliance(
 	WebVttHlsReceiverAppliance,
 	{

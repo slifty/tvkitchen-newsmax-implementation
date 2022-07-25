@@ -61,7 +61,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 				type: 'FILE.UPLOADED',
 				position: payload.position,
 				duration: 0,
-				origin,
+				origin: payload.origin,
 			}))
 		})
 		return new PayloadArray()
