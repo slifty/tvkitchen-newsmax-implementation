@@ -4,8 +4,10 @@
   "description": "A testbed for the TV Kitchen",
   "main": "src/index.js",
   "scripts": {
+    "build": "yarn run babel src -d dist",
     "lint": "eslint 'src/**/*.js'",
-    "start": "yarn babel-node src/index.js",
+    "start": "node dist/index.js",
+    "start:dev": "yarn babel-node src/index.js",
     "start:kafka": "docker-compose -f services/kafka/docker-compose.yml up -d",
     "test": "jest"
   },

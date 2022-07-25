@@ -10,10 +10,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 COPY yarn.lock ./
 RUN yarn
+COPY src ./src
+RUN yarn build
 
-# Bundle app source
-COPY . .
-
-WORKDIR /usr/src/app
-
-# ENTRYPOINT [ "yarn", "start" ]
+ENTRYPOINT [ "yarn", "start" ]
