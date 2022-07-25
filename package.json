@@ -4,8 +4,10 @@
   "description": "A testbed for the TV Kitchen",
   "main": "src/index.js",
   "scripts": {
+    "build": "yarn run babel src -d dist",
     "lint": "eslint 'src/**/*.js'",
-    "start": "yarn babel-node src/index.js",
+    "start": "node dist/index.js",
+    "start:dev": "yarn babel-node src/index.js",
     "start:kafka": "docker-compose -f services/kafka/docker-compose.yml up -d",
     "test": "jest"
   },
@@ -14,9 +16,12 @@
   "dependencies": {
     "@tvkitchen/appliance-caption-srt-generator": "^0.3.0",
     "@tvkitchen/appliance-core": "0.9.0",
+    "@tvkitchen/appliance-video-segment-generator": "^0.3.0",
     "@tvkitchen/base-classes": "^2.0.0-alpha.1",
-    "@tvkitchen/countertop": "^0.4.1",
+    "@tvkitchen/base-constants": "^1.2.0",
+    "@tvkitchen/countertop": "^0.4.2",
     "aws-sdk": "^2.1154.0",
+    "dayjs": "^1.11.4",
     "dotenv": "^16.0.1",
     "hls-parser": "^0.10.4",
     "node-fetch": "^2.6.7",

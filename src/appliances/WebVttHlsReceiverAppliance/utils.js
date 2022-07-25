@@ -8,29 +8,22 @@ export const isHlsUrl = (url) => path.extname(url) === '.m3u8'
 export const getRootUrl = (url) => path.parse(url).dir
 
 export const arrayHasItem = (items, soughtItem, isEqual) => items.find(
-	(item) => isEqual(item, soughtItem)
+	(item) => isEqual(item, soughtItem),
 )
 
 export const getNewItemsBy = (currentItems, nextItems, isEqual) => nextItems.filter(
-	(nextItem) => !arrayHasItem(currentItems, nextItem, isEqual)
+	(nextItem) => !arrayHasItem(currentItems, nextItem, isEqual),
 )
 
-const wait = (delay) => {
-    return new Promise((resolve) => setTimeout(resolve, delay));
-}
+const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-const fetchRetry = (url, delay, tries, fetchOptions = {}) => {
-    function onError(err){
-        var triesLeft = tries - 1;
-        if(!triesLeft){
-            // throw err;
-			console.log('time out, returning blanks')
-			return {"text": () => ''}
-        }
-        return wait(delay).then(() => fetchRetry(url, delay, triesLeft, fetchOptions));
-    }
-    return fetch(url,fetchOptions).catch(onError);
-}
+const fetchRetry = (url, delay, tries, fetchOptions = {}) => fetch(url, fetchOptions).catch(() => {
+	const triesLeft = tries - 1
+	if (!triesLeft) {
+		return { text: () => '' }
+	}
+	return wait(delay).then(() => fetchRetry(url, delay, triesLeft, fetchOptions))
+})
 
 export const loadHlsData = async (url) => {
 	const result = await fetchRetry(url, 5, 3)

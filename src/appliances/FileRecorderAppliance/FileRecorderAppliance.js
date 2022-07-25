@@ -23,9 +23,7 @@ export class FileRecorderAppliance extends AbstractAppliance {
 	static getOutputTypes = () => ['FILE.CLOSED', 'FILE.OPENED']
 
 	/** @inheritdoc */
-	audit = async () => {
-		return true
-	}
+	audit = async () => true
 
 	/** @inheritdoc */
 	start = async () => {
@@ -50,7 +48,7 @@ export class FileRecorderAppliance extends AbstractAppliance {
 			this.push(new Payload({
 				data: oldFilePath,
 				type: 'FILE.CLOSED',
-				position: position,
+				position,
 				duration: 0,
 				origin,
 			}))
@@ -65,7 +63,7 @@ export class FileRecorderAppliance extends AbstractAppliance {
 		this.push(new Payload({
 			data: this.currentFilePath,
 			type: 'FILE.OPENED',
-			position: position,
+			position,
 			duration: 0,
 			origin,
 		}))
@@ -85,10 +83,11 @@ export class FileRecorderAppliance extends AbstractAppliance {
 			switch (payload.type) {
 				case 'TEXT.SRT':
 					this.processSrtPayload(payload)
-					break;
+					break
 				case 'SEGMENT.START':
 					this.startNewRecording(payload)
-					break;
+					break
+				default:
 			}
 		})
 		return new PayloadArray()

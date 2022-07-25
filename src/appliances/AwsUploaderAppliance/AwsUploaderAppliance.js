@@ -14,6 +14,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 			accessKeyId: '',
 			secretAccessKey: '',
 			bucketName: '',
+			bucketPrefix: '',
 			bucketConfiguration: {},
 			...settings,
 		})
@@ -30,9 +31,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 	static getOutputTypes = () => ['FILE.UPLOADED']
 
 	/** @inheritdoc */
-	audit = async () => {
-		return true
-	}
+	audit = async () => true
 
 	/** @inheritdoc */
 	start = async () => {
@@ -50,7 +49,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 			const fileContent = fs.readFileSync(filePath)
 			const params = {
 				Bucket: this.settings.bucketName,
-				Key: fileName,
+				Key: `${this.settings.bucketPrefix}/${fileName}`,
 				Body: fileContent,
 			}
 			await this.s3.upload(params).promise()
@@ -62,7 +61,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 				type: 'FILE.UPLOADED',
 				position: payload.position,
 				duration: 0,
-				origin,
+				origin: payload.origin,
 			}))
 		})
 		return new PayloadArray()

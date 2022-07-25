@@ -57,7 +57,6 @@ export const getPeriodPosition = (position, segmenterStartingPosition, interval)
 	return segmenterStartingPosition + offsetPosition
 }
 
-
 /**
  * Creates an array of values.
  * @param  {Number} start The first value to create.

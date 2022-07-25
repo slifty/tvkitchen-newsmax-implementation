@@ -7,9 +7,11 @@ function segmentsAreEqual(firstSegment, secondSegment) {
 	return firstSegment.uri === secondSegment.uri
 }
 
-class HlsPlaylistProcessor {
+export class HlsPlaylistProcessor {
 	playlistUrl = null
+
 	previousSegments = []
+
 	refreshIntervalId = null
 
 	constructor({
@@ -31,9 +33,9 @@ class HlsPlaylistProcessor {
 		)
 		this.previousSegments = newPlaylistData.segments
 		await newSegments.reduce(async (previousSegmentPromise, newSegment) => {
-			await previousSegmentPromise;
+			await previousSegmentPromise
 			await this.onSegment(newSegment)
-		}, Promise.resolve());
+		}, Promise.resolve())
 	}
 
 	start = () => {
@@ -49,6 +51,3 @@ class HlsPlaylistProcessor {
 		this.refreshIntervalId = null
 	}
 }
-
-
-export { HlsPlaylistProcessor }
