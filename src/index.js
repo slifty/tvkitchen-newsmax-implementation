@@ -1,6 +1,7 @@
-import fs from 'fs'
 import dotenv from 'dotenv'
 import { Countertop } from '@tvkitchen/countertop'
+import { CaptionSrtGeneratorAppliance } from '@tvkitchen/appliance-caption-srt-generator'
+import { INTERVALS } from '@tvkitchen/appliance-video-segment-generator'
 import {
 	WebVttHlsReceiverAppliance,
 	TextReducerAppliance,
@@ -8,8 +9,6 @@ import {
 	SegmentGeneratorAppliance,
 	AwsUploaderAppliance,
 } from './appliances'
-import { CaptionSrtGeneratorAppliance } from '@tvkitchen/appliance-caption-srt-generator'
-import { INTERVALS } from '@tvkitchen/appliance-video-segment-generator'
 import { getTimestampFromNewsmaxWebVtt } from './utils'
 import { logger } from './logger'
 
@@ -68,8 +67,6 @@ countertop.addAppliance(
 )
 
 countertop.on('data', (payload) => {
-	if (payload.type === 'TEXT.SRT') {
-	}
 	if (payload.type === 'FILE.OPENED') {
 		logger.debug('OPENED FILE')
 		logger.debug(payload.data)
@@ -83,4 +80,5 @@ countertop.on('data', (payload) => {
 		logger.debug(payload.data)
 	}
 })
+
 countertop.start()

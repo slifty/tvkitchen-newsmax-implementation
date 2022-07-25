@@ -33,7 +33,7 @@ function convertCharactersToPayloads(cueText, payload) {
 export class TextReducerAppliance extends AbstractAppliance {
 	constructor(settings) {
 		super(settings)
-		this.previousCue = '';
+		this.previousCue = ''
 	}
 
 	static getInputTypes = () => ['TEXT.CUE']
@@ -41,9 +41,7 @@ export class TextReducerAppliance extends AbstractAppliance {
 	static getOutputTypes = () => ['TEXT.ATOM']
 
 	/** @inheritdoc */
-	audit = async () => {
-		return true
-	}
+	audit = async () => true
 
 	/** @inheritdoc */
 	start = async () => {
@@ -57,7 +55,7 @@ export class TextReducerAppliance extends AbstractAppliance {
 	invoke = async (payloadArray) => {
 		payloadArray.toArray().forEach((payload) => {
 			const lines = parseLines(payload.data.toString())
-			const newCue = '\n' + lines.pop().trim()
+			const newCue = `\n${lines.pop().trim()}`
 			const newCharacters = getDiff(newCue, this.previousCue)
 			this.previousCue = newCue
 			const payloads = convertCharactersToPayloads(

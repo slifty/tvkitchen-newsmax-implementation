@@ -31,9 +31,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 	static getOutputTypes = () => ['FILE.UPLOADED']
 
 	/** @inheritdoc */
-	audit = async () => {
-		return true
-	}
+	audit = async () => true
 
 	/** @inheritdoc */
 	start = async () => {

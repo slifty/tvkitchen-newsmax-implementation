@@ -15,10 +15,10 @@ import { HlsPlaylistProcessor } from './HlsPlaylistProcessor'
  * @extends AbstractAppliance
  */
 class WebVttHlsReceiverAppliance extends AbstractAppliance {
-
 	static getInputTypes = () => []
 
 	static getOutputTypes = () => ['TEXT.CUE']
+
 	/**
 	 * Create a WebVttHlsReceiverAppliance.
 	 *
@@ -75,7 +75,6 @@ class WebVttHlsReceiverAppliance extends AbstractAppliance {
 
 	/** @inheritdoc */
 	invoke = async (payloadArray) => payloadArray
-
 }
 
 export { WebVttHlsReceiverAppliance }
