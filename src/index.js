@@ -58,6 +58,7 @@ countertop.addAppliance(
 		accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 		bucketName: process.env.AWS_BUCKET_NAME,
+		bucketPrefix: process.env.AWS_BUCKET_PREFIX,
 		bucketConfiguration: {
 			LocationConstraint: process.env.AWS_BUCKET_REGION,
 		},

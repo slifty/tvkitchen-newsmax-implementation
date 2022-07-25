@@ -14,6 +14,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 			accessKeyId: '',
 			secretAccessKey: '',
 			bucketName: '',
+			bucketPrefix: '',
 			bucketConfiguration: {},
 			...settings,
 		})
@@ -50,7 +51,7 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 			const fileContent = fs.readFileSync(filePath)
 			const params = {
 				Bucket: this.settings.bucketName,
-				Key: fileName,
+				Key: `${this.settings.bucketPrefix}/${fileName}`,
 				Body: fileContent,
 			}
 			await this.s3.upload(params).promise()
