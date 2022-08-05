@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json ./
+COPY babel.config.json ./
 COPY yarn.lock ./
 RUN yarn
 COPY src ./src
