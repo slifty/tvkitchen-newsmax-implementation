@@ -13,5 +13,6 @@ COPY yarn.lock ./
 RUN yarn
 COPY src ./src
 RUN yarn build
+RUN mkdir data
 
 ENTRYPOINT [ "yarn", "start" ]
