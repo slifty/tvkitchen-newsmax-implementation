@@ -50,17 +50,22 @@ class WebVttHlsReceiverAppliance extends AbstractAppliance {
 
 	processSegment = async (segment) => {
 		const webVttUrl = `${getRootUrl(this.settings.url)}/${segment.uri}`
-		const webVttData = await loadWebVttData(webVttUrl)
-		if (this.settings.calculateCurrentOrigin) {
-			const currentOrigin = this.settings.calculateCurrentOrigin(
-				webVttUrl,
-				webVttData,
-			)
-			this.setCurrentOrigin(currentOrigin.toISOString())
+		try {
+			const webVttData = await loadWebVttData(webVttUrl)
+			if (this.settings.calculateCurrentOrigin) {
+				const currentOrigin = this.settings.calculateCurrentOrigin(
+					webVttUrl,
+					webVttData,
+				)
+				this.setCurrentOrigin(currentOrigin.toISOString())
+			}
+			webVttData.cues.forEach((cue) => {
+				this.push(convertWebVttCueToPayload(cue))
+			})
+		} catch (e) {
+			this.warn('Failed to parse VTT data')
+			this.warn(e)
 		}
-		webVttData.cues.forEach((cue) => {
-			this.push(convertWebVttCueToPayload(cue))
-		})
 	}
 
 	/** @inheritdoc */
