@@ -11,8 +11,6 @@ export class AwsUploaderAppliance extends AbstractAppliance {
 	constructor(settings) {
 		super({
 			deleteAfterUpload: false,
-			accessKeyId: '',
-			secretAccessKey: '',
 			bucketName: '',
 			bucketPrefix: '',
 			bucketConfiguration: {},
