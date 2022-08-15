@@ -20,6 +20,8 @@ cp .env.template .env
 edit .env
 ```
 
+AWS authentication should be provided using one of the methods [described in the AWS documentation](https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-credentials-node.html)
+
 ## Using Docker
 
 Alternatively you can run the entire application within Docker using [Docker Compose](https://docs.docker.com/compose/).
