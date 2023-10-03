@@ -51,18 +51,18 @@ countertop.addAppliance(
 		appendSeparator: '\n',
 	},
 )
-if (process.env.AWS_BUCKET_NAME){
-countertop.addAppliance(
-	AwsUploaderAppliance,
-	{
-		deleteAfterUpload: true,
-		bucketName: process.env.AWS_BUCKET_NAME,
-		bucketPrefix: process.env.AWS_BUCKET_PREFIX,
-		bucketConfiguration: {
-			LocationConstraint: process.env.AWS_BUCKET_REGION,
+if (process.env.AWS_BUCKET_NAME) {
+	countertop.addAppliance(
+		AwsUploaderAppliance,
+		{
+			deleteAfterUpload: true,
+			bucketName: process.env.AWS_BUCKET_NAME,
+			bucketPrefix: process.env.AWS_BUCKET_PREFIX,
+			bucketConfiguration: {
+				LocationConstraint: process.env.AWS_BUCKET_REGION,
+			},
 		},
-	},
-)
+	)
 }
 countertop.on('data', (payload) => {
 	if (payload.type === 'FILE.OPENED') {
