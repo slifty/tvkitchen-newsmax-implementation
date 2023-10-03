@@ -51,6 +51,7 @@ countertop.addAppliance(
 		appendSeparator: '\n',
 	},
 )
+if (process.env.AWS_BUCKET_NAME){
 countertop.addAppliance(
 	AwsUploaderAppliance,
 	{
@@ -62,7 +63,7 @@ countertop.addAppliance(
 		},
 	},
 )
-
+}
 countertop.on('data', (payload) => {
 	if (payload.type === 'FILE.OPENED') {
 		logger.debug('OPENED FILE')
