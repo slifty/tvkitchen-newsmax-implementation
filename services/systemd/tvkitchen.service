@@ -1,0 +1,17 @@
+[Unit]
+Description=tvkitchen service
+After=tvkitchen-kafka.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=/usr/bin/node /home/pi/tvkitchen-newsmax-implementation/dist/index.js 
+Environment=AWS_BUCKET_NAME=
+Environment=KAFKA_BROKER="127.0.0.1:9092"
+WorkingDirectory=/home/pi/tvkitchen-newsmax-implementation/
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=tvkitchen kafka
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+#Restart=always
+#RestartSec=1
+User=pi
+ExecStart=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi.yml up -d
+ExecStop=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi.yml stop 
+
+[Install]
+WantedBy=multi-user.target
