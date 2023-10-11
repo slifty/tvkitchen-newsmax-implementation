@@ -30,3 +30,7 @@ Alternatively you can run the entire application within Docker using [Docker Com
 2. `docker-compose up`
 
 This will create zookeeper, kafka, and newsmax docker images.
+
+## Using systemd.
+
+In `services/systemd/` there are systemd Unit files for automatically running Kafka, Zookeeper and the TVKitchen script on a 64-bit Raspberry Pi. These take the place of steps 3 and 4 in the Developing section. They may require slight modifications around the absolute paths for your use (which would be outside the scope of this document, it's just regular systemd configuration) and may require the docker-compose file reference to be modified for your architecture. See [services/kafka/README.md](Docker README) for more information.

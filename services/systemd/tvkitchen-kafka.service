@@ -9,8 +9,8 @@ RemainAfterExit=yes
 #Restart=always
 #RestartSec=1
 User=pi
-ExecStart=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi.yml up -d
-ExecStop=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi.yml stop 
+ExecStart=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi-aarch64.yml up -d
+ExecStop=/home/pi/.local/bin/docker-compose -f /home/pi/tvkitchen-newsmax-implementation/services/kafka/docker-compose-pi-aarch64.yml down
 
 [Install]
 WantedBy=multi-user.target
